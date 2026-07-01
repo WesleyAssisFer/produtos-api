@@ -34,7 +34,7 @@ class ProdutoService{
             throw new Error("Produto não encontrado")
         }
         await produto.destroy();
-        return console.log(`Produto de id ${id} excluido com sucesso`)
+        return {mensagem:`Produto de id ${id} excluido com sucesso`};
     }
 }
 
