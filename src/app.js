@@ -1,6 +1,7 @@
 import express from 'express';
 import sequelize from './database/connection.js'
 import Produto from './models/Produto.js'
+import produtoRotas from './routes/produtosRoutes.js'
 
 const app = express();
 
@@ -21,5 +22,7 @@ async function rodarServidor(){
         console.log("Erro ao conectar banco: " + error.message)
     }
 }
+
+app.use('/produtos',produtoRotas)
 
 rodarServidor();
