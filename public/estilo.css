@@ -1,0 +1,25 @@
+body{
+    background: rgb(57, 57, 144);
+    font: normal 15pt Arial;
+}
+header{
+    color: white;
+    text-align: center;
+}
+section{
+    background: white;
+    padding: 15px;
+    width: 500px;
+    margin: auto;
+    border-radius: 8px;
+}
+button{
+    margin-top: 15px;
+    padding: 10px 20px;
+    cursor: pointer;
+}
+#mensagem{
+    margin-top: 20px;
+    font-weight: bold;
+    color: green;
+}
