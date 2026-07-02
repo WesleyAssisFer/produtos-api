@@ -31,8 +31,8 @@ async function listar() {
 
     produtos.forEach(produto => {
         html += `
-            <p>
-                ${produto.nome}
+            <p> Id: ${produto.id}
+                |${produto.nome}
                 | R$ ${produto.preco}
                 | Quantidade: ${produto.quantidade}
 
@@ -86,6 +86,37 @@ async function atualizar() {
 
     limparCampos();
     listar();
+}
+
+async function buscarPorId() {
+
+    const id = document.getElementById("buscarId").value;
+
+    const resposta = await fetch(`/produtos/${id}`);
+
+    if (!resposta.ok) {
+        alert("Produto não encontrado!");
+        return;
+    }
+
+    const produto = await resposta.json();
+
+    document.getElementById("resultado").innerHTML = `
+        <p>
+            Id:${produto.id}
+            |${produto.nome}
+            | R$ ${produto.preco}
+            | Quantidade: ${produto.quantidade}
+
+            <button onclick="prepararAtualizacao(${produto.id}, '${produto.nome}', ${produto.preco}, ${produto.quantidade})">
+                Atualizar
+            </button>
+
+            <button onclick="excluir(${produto.id})">
+                Excluir
+            </button>
+        </p>
+    `;
 }
 
 async function excluir(id) {
