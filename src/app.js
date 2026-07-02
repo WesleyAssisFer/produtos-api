@@ -3,7 +3,15 @@ import sequelize from './database/connection.js'
 import Produto from './models/Produto.js'
 import produtoRotas from './routes/produtosRoutes.js'
 
+import path from 'path'
+import { fileURLToPath } from 'url';
+
 const app = express();
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
+
+app.use(express.static(path.join(__dirname, "../public")));
 
 app.use(express.json());
 
